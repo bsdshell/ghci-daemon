@@ -1,0 +1,38 @@
+<h1 id="ghci-daemon">ghci-daemon</h1>
+<p>This package allows you to wrap a “stack ghci” command and control it by sending commands to a network socket (or using the <code>ghci-client</code> executable).</p>
+<h2 id="how-to-use">How to use?</h2>
+<p>Start the daemon:</p>
+<pre><code>ghci-daemon</code></pre>
+<p>Send a command:</p>
+<pre><code>ghci-client -c &quot;:reload&quot;</code></pre>
+<p>(If you installed this package using stack you might want to use <code>stack exec</code> to call the executables.)</p>
+<h2 id="easy-vim-integration">Easy Vim integration</h2>
+<p>ghci-daemon can be integrated into vim without any plugins.</p>
+<ol type="1">
+<li><p>Make sure the daemon is running.</p></li>
+<li><p>Load vim’s ghc compiler plugin.</p>
+<pre><code>:compiler ghc</code></pre></li>
+<li><p>Set makeprg to ghci-client</p>
+<pre><code>:set makepgr=ghci-client \-c:reload</code></pre></li>
+</ol>
+<p>Running <code>:make</code> will now reload your program and load the errors into your quickfix list.</p>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li>The deamon only supports single threaded operation</li>
+<li>The client does not handle interrupts (e.g <code>Ctrl-C</code>) correctly (it just closes). If you have to stop the currently executed command, you have to use <code>ghci-client --free</code> after killing the client.</li>
+</ul>
+<h2 id="change-ghc-resolver-to-lts-13.28-from-lts-12.4">Change GHC resolver to lts-13.28 from lts-12.4</h2>
+<ul>
+<li>Add install.sh</li>
+<li>./install.sh</li>
+</ul>
+<pre><code> $sym/ghci-daemon
+ $sym/ghci-client</code></pre>
+<ul>
+<li>run ghci-daemon under $sp/AronModule</li>
+<li>load AronModule inside ghci</li>
+<li>run ghci-daemon under <code>ghci_stack.sh</code></li>
+</ul>
+<pre><code> cd $sp/AronModule
+ stack exec ghci-daemon
+ stack exec ghci-client -c &#39;:m +AronModule&#39;</code></pre>
