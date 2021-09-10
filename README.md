@@ -37,3 +37,20 @@ quickfix list.
 * The client does not handle interrupts (e.g `Ctrl-C`) correctly (it just
   closes). If you have to stop the currently executed command, you have to use
   `ghci-client --free` after killing the client.
+
+# My Changes
+## Change GHC resolver to lts-13.28 from lts-12.4
+* Add install.sh
+* ./install.sh
+```
+ $sym/ghci-daemon
+ $sym/ghci-client
+```
+* run ghci-daemon under $sp/AronModule
+* load AronModule inside ghci
+* run ghci-daemon under `ghci_stack.sh`
+```
+ cd $sp/AronModule
+ ghci-daemon
+ ghci-client -c ':m +AronModule'
+```
