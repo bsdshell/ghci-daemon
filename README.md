@@ -41,8 +41,10 @@ quickfix list.
 # My Changes
 ## Change GHC resolver to lts-13.28 from lts-12.4
 * Add install.sh
-* ./install.sh
+* ./install.sh in
 ```
+ $ff/mybin/ghci-clientBin/ghci-client
+ $ff/mybin/ghci-daemonBin/ghci-daemon
  $sym/ghci-daemon
  $sym/ghci-client
 ```
@@ -54,3 +56,11 @@ quickfix list.
  ghci-daemon
  ghci-client -c ':m +AronModule'
 ```
+
+## Start ghci-daemon
+
+```
+ghci_stack.sh -s
+gd ':i map'
+```
+
