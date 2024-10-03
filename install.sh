@@ -63,7 +63,7 @@ getpwd
 # getName -> $ff/mybin/getName  is Haskell code
 mybin=$HOME/myfile/mybin
 fname=$(getName $PWD)
-dir=${fname}Bin
+dir=${fname}
 
 bindir=$mybin/$dir
 
@@ -119,7 +119,7 @@ elif [[ "$#" -eq 1 ]]; then
 
         # ln -s $bindir/$fname $fname
         for fn in $execList; do
-            ln -s $bindir/$fn $fn
+            ln -sf $bindir/$fn $fn
         done
 
         # hard code it since ghci-daemon has two exec files
